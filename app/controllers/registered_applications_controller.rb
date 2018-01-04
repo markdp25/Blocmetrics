@@ -1,5 +1,6 @@
 class RegisteredApplicationsController < ApplicationController
-  def index
+    def index
+       @registered_applications = current_user.registered_applications
     end
 
     def show
@@ -13,10 +14,10 @@ class RegisteredApplicationsController < ApplicationController
     def create
       @app = current_user.registered_applications.new(app_params)
       if @app.save
-        flash[:success] = "Success!"
+        flash[:notice] = "Success!"
         redirect_to registered_applications_path
       else
-        flash.now[:warning] = "Please enter a valid name and URL."
+        flash.now[:alert] = "Please enter a valid name and URL."
         render 'new'
       end
     end
@@ -24,10 +25,10 @@ class RegisteredApplicationsController < ApplicationController
     def destroy
       @app = RegisteredApplication.find(params[:id])
       if @app.destroy
-        flash[:success] = "Removed!"
+        flash[:notice] = "Removed!"
         redirect_to registered_applications_path
       else
-        flash[:warning] = "Try again!"
+        flash[:alert] = "Try again!"
       end
     end
 
