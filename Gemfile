@@ -23,6 +23,7 @@ source 'https://rubygems.org'
 
  gem 'bootstrap-sass'
  gem 'devise'
+ gem 'faker'
 
  # Use Puma as the app server
  gem 'puma', '~> 3.0'
