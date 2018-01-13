@@ -24,6 +24,8 @@ source 'https://rubygems.org'
  gem 'bootstrap-sass'
  gem 'devise'
  gem 'faker'
+ gem 'chartkick'
+ gem 'groupdate'
 
  # Use Puma as the app server
  gem 'puma', '~> 3.0'

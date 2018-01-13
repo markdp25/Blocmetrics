@@ -2,6 +2,11 @@
 <h1> Events </h1>
 <h4><small>has a total of <%= pluralize(@events.count, "event") %>...</small></h4>
 
-<% @events.each do |key, value| %>
- <li><%= key %>, <%= pluralize(value.count, "occurrence") %></li>
+<% @events.each do |event, count| %>
+  <h4><%= "#{event}" %></h4>
+<% end %>
+
+<% if @app.events.count > 0 %>
+<%= pie_chart @app.events.group(:name).count %>
+<%= line_chart @app.events.group_by_day(:created_at).count %>
 <% end %>
